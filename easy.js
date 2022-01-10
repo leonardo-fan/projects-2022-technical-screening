@@ -31,9 +31,9 @@ var assert = require("assert")
 // Explanation: Empty array...
 
 const altNumbers = (numArray) => {
-    var pos = [];
-    var neg = [];
-    var alt = [];
+    let pos = [];
+    let neg = [];
+    let alt = [];
 
     for (let i = 0; i < numArray.length; i++) {
         if (numArray[i] >= 0) {
