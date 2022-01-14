@@ -31,41 +31,31 @@ var assert = require("assert")
 // Explanation: Empty array...
 
 const altNumbers = (numArray) => {
-    let pos = [];
-    let neg = [];
-    let alt = [];
+    if (numArray.length == 0) return numArray;
 
-    for (let i = 0; i < numArray.length; i++) {
-        if (numArray[i] >= 0) {
-            pos.push(numArray[i]);
-        } else {
-            neg.push(numArray[i]);
-        }
+    const pos = numArray.filter(num => num >= 0);
+    const neg = numArray.filter(num => num < 0);
+    const alt = [];
+    
+    let odd = [];
+    let even = [];
+    if (pos.length >= neg.length) {
+        odd = pos;
+        even = neg;
+    } else {
+        odd = neg;
+        even = pos;
     }
 
-    if (pos.length >= neg.length) {
-        let pos_i = 0;
-        let neg_i = 0;
-        for (let i = 0; i < numArray.length; i++) {
-            if (i % 2 == 0) {
-                alt.push(pos[pos_i]);
-                pos_i++;
-            } else {
-                alt.push(neg[neg_i]);
-                neg_i++;
-            }
-        }
-    } else {
-        let neg_i = 0;
-        let pos_i = 0;
-        for (let i = 0; i < numArray.length; i++) {
-            if (i % 2 == 0) {
-                alt.push(neg[neg_i]);
-                neg_i++;
-            } else {
-                alt.push(pos[pos_i]);
-                pos_i++;
-            }
+    let odd_i = 0;
+    let even_i = 0;
+    for (let i = 0; i < numArray.length; i++) {
+        if (i % 2 == 0) {
+            alt.push(odd[odd_i]);
+            odd_i++;
+        } else {
+            alt.push(even[even_i]);
+            even_i++;
         }
     }
 
